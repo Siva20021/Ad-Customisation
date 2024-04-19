@@ -29,6 +29,7 @@ const Caption = ({ captionData, canvasRef ,color }) => {
                 placeholder="Caption"
                 type="text"
                 value={caption}
+                maxLength={89} 
                 onChange={(e) => setCaption(e.target.value)}
                 className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
             />

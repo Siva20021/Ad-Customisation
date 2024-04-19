@@ -32,6 +32,7 @@ const UploadImage = ({canvasRef,color}) => {
         className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none p-2"
         id="file_input"
         type="file"
+        accept='image/*'
         onChange={handleImageChange}
     />
   )

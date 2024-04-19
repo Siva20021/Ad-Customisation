@@ -56,6 +56,15 @@ export const modifyCaption = (context, text , x, y, max_characters_per_line, fon
     wrapText(context, text, x, y, max_characters_per_line,font_size);
 }
 
+/**
+ * clearRoundedButton Area - This function is used to clear the rounded button area
+ * @param {Object} context 
+ * @param {Number} x 
+ * @param {Number} y 
+ * @param {Number} width 
+ * @param {Number} height 
+ * @param {Number} cornerRadius 
+ */
 const clearRoundedButtonArea = (context, x, y, width, height, cornerRadius) => {
     context.beginPath();
     context.moveTo(x + cornerRadius, y);
@@ -71,6 +80,18 @@ const clearRoundedButtonArea = (context, x, y, width, height, cornerRadius) => {
     context.clearRect(x +10, y, width-40, height);
 };
 
+/**
+ * modifyCTA - This function is used to modify the CTA on the canvas
+ * @param {Object} context 
+ * @param {Number} text 
+ * @param {Number} x 
+ * @param {Number} y 
+ * @param {Number} max_characters_per_line 
+ * @param {Number} font_size 
+ * @param {String} alignment 
+ * @param {String} text_color 
+ * @param {String} background_color 
+ */
 export const modifyCTA = (context, text, x, y, max_characters_per_line, font_size, alignment, text_color, background_color) => {
     // Clear the area for the button
    
@@ -101,7 +122,11 @@ export const modifyCTA = (context, text, x, y, max_characters_per_line, font_siz
     wrapText(context, text, x, y, max_characters_per_line, font_size);
 };
 
-
+/**
+ * modifyImage - This function is used to modify the image on the canvas
+ * @param {*} context 
+ * @param {*} image 
+ */
 export const modifyImage = (context , image)=>{
         context.clearRect(56, 442, 970, 600);
         const patternImage = new Image();
@@ -110,10 +135,9 @@ export const modifyImage = (context , image)=>{
         };
         patternImage.src = "./pattern.png";
         context.drawImage(image, 56, 442, 970, 600);
-        
         const strokeImage = new Image();
         strokeImage.onload = () => {
-          context.drawImage(strokeImage, 56, 442+600, 970, 600);
+         context.drawImage(strokeImage, 56, 442+600, 970, 600);
         };
         strokeImage.src = "./stroke.png";
 }
