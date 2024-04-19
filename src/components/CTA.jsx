@@ -1,16 +1,19 @@
 import React,{useEffect,useState} from 'react'
+import { modifyCTA } from '../utils';
 
-const CTA = ({ctaData,canvasRef}) => {
+const CTA = ({ ctaData ,canvasRef ,max_characters_per_line=20 , alignment = "center", font_size =30}) => {
     const [cta,setCta]=useState(ctaData?.text ?? '');
     useEffect(() => {
         // This condition is to check whether currentRef of the canvas is null or not . In case if it is passed before calling of Canvas 
         if (!canvasRef.current) return;
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
-        const { position, max_characters_per_line, font_size, alignment, text_color } = ctaData;
+       
+        const { position , background_color , text_color } = ctaData;
+        
         const { x, y } = position;
-        wrapText(context, caption, x, y, max_characters_per_line,font_size); 
-
+        modifyCTA(context, cta, x, y, max_characters_per_line, font_size, alignment, text_color , background_color);
+        
     }, [cta, ctaData, canvasRef]);
   return (
     <label

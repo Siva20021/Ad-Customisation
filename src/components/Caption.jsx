@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { wrapText } from '../utils';
+import { modifyCaption, wrapText } from '../utils';
 
-const Caption = ({ captionData, canvasRef }) => {
+const Caption = ({ captionData, canvasRef ,color }) => {
     const [caption, setCaption] = useState(captionData?.text ?? '');
+    const [selectedColor, setSelectedColor] =useState(color);
 
+    useEffect(()=>{
+        setSelectedColor(localStorage.getItem('color'));
+    },[localStorage.getItem('color')]);
     useEffect(() => {
         // This condition is to check whether currentRef of the canvas is null or not . In case if it is passed before calling of Canvas 
         if (!canvasRef.current) return;
@@ -11,8 +15,9 @@ const Caption = ({ captionData, canvasRef }) => {
         const context = canvas.getContext('2d');
         const { position, max_characters_per_line, font_size, alignment, text_color } = captionData;
         const { x, y } = position;
-        wrapText(context, caption, x, y, max_characters_per_line,font_size,alignment,text_color);
-    }, [caption, captionData, canvasRef]);
+       
+        modifyCaption(context, caption, x, y, max_characters_per_line, font_size, alignment, text_color, color);
+    }, [caption,selectedColor, captionData, canvasRef]);
 
     return (
         <label
