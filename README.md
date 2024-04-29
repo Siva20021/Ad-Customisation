@@ -1,4 +1,4 @@
-# Zocket Front End Intern Task
+# AD Customisation 
 
 ## Overview
 This project is a simple canvas-like editor implemented using React for the UI and vanilla HTML Canvas with Classes and OOP concepts for the canvas functionality. Users can select an image to be placed within a mask on the canvas, change the caption text, modify the call to action (CTA) text, and adjust the background color of the template.
